@@ -10,7 +10,7 @@ plugin_package = "octoprint_ender3v2tempfix"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
-plugin_name = "Ender-3 v2 Temp Fix"
+plugin_name = "Ender-3 v2 Temperature Fix"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
 plugin_version = "0.0.1"
