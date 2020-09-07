@@ -45,7 +45,7 @@ class Ender3V2TempFixPlugin(octoprint.plugin.OctoPrintPlugin):
                 user="SimplyPrint",
                 repo="OctoPrint-Ender3V2TempFix",
 
-                pip="https://github.com/SimplyPrint/OctoPrint-Ender3V2TempFix/archive/master.zip"
+                pip="https://github.com/SimplyPrint/OctoPrint-Ender3V2TempFix/archive/{target_version}.zip"
             )
         )
 
