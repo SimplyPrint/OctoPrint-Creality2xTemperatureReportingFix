@@ -20,7 +20,7 @@ plugin_version = "0.0.1"
 plugin_description = "Fixes the temperature reporting from the Creality Ender-3 v2 printer"
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
-plugin_author = "SimplyPrint"
+plugin_author = "SimplyPrint & Brad Morgan"
 
 # The plugin's author's mail address.
 plugin_author_email = "albert@simplyprint.dk"
