@@ -36,7 +36,7 @@ class Ender3V2TempFixPlugin(octoprint.plugin.OctoPrintPlugin):
 
     def get_update_information(self, *args, **kwargs):
         return dict(
-            updateplugindemo=dict(
+            ender3v2tempfix=dict(
                 displayName=self._plugin_name,
                 displayVersion=self._plugin_version,
 
