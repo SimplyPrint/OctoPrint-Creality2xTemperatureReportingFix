@@ -60,6 +60,6 @@ def __plugin_load__():
     global __plugin_hooks__
     __plugin_hooks__ = {
         "octoprint.comm.protocol.temperatures.received": __plugin_implementation__.TempReport,
-        "octoprint.comm.protocol.gcode.received": __plugin_implementation__.check_for_temp_report,
+        "octoprint.comm.protocol.gcode.received": (__plugin_implementation__.check_for_temp_report, 1),
         "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
     }
