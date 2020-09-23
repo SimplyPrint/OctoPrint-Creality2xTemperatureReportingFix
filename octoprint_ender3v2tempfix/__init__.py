@@ -43,9 +43,9 @@ class Ender3V2TempFixPlugin(octoprint.plugin.OctoPrintPlugin):
                 type="github_release",
                 current=self._plugin_version,
                 user="SimplyPrint",
-                repo="OctoPrint-Ender3V2TempFix",
+                repo="OctoPrint-Creality2xTemperatureReportingFix",
 
-                pip="https://github.com/SimplyPrint/OctoPrint-Ender3V2TempFix/archive/{target_version}.zip"
+                pip="https://github.com/SimplyPrint/OctoPrint-Creality2xTemperatureReportingFix/archive/{target_version}.zip"
             )
         )
 

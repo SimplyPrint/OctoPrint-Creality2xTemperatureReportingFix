@@ -10,14 +10,14 @@ plugin_package = "octoprint_ender3v2tempfix"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
-plugin_name = "Ender-3 v2 Temperature Fix"
+plugin_name = "Creality 2x temperature reporting fix"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
 plugin_version = "0.0.3"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
-plugin_description = "Fixes the temperature reporting from the Creality Ender-3 v2 printer"
+plugin_description = "Fixes the temperature reporting from Creality printers shipped with the new mainboard (new Ender-3 Pro's, Ender-3 Pro v2, CR-6 SE & possibly more)"
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
 plugin_author = "SimplyPrint & Brad Morgan"
