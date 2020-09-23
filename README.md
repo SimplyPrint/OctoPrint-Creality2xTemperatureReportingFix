@@ -1,4 +1,4 @@
-# OctoPrint-Ender3V2TempFix
+# Creality 2x temperature reporting fix
 Fixes the double temperature reporting from the Creality Ender-3 v2 printer described in [this OctoPrint forum topic](https://community.octoprint.org/t/octoprint-doesnt-show-a-temperature-graph-for-my-creality-printer/23901).
 
 Some of the newer Creality firmware has an issue where, when reporting its temperature, it writes everything twice.
