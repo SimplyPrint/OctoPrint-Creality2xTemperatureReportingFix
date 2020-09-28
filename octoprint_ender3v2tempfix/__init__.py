@@ -13,26 +13,29 @@ class Ender3V2TempFixPlugin(octoprint.plugin.OctoPrintPlugin):
     #
     # Recv:   TT::27.7627.76  //0.000.00  BB::39.3539.35  //0.000.00  @@::00  BB@@::00
     # Recv:  T:23.84 /0.00 B:24.05 /0.00 @:0 B@:0
-    #
-    parse_Ender3V2Temp = re.compile(
-        '.*TT::(\d+)\.\d+\.(\d+).+\/\/(\d+)\.\d+\.(\d+).*BB::(\d+)\.\d+\.(\d+).+\/\/(\d+)\.\d+\.(\d+)')
+
+    double_pattern = '(\d+)\.\d+\d+\.(\d+)\s*//\s*(\d+)\.\d+\d+\.(\d+)'
+    parse_hotend_temp = re.compile('(T\d*)\\1::' + double_pattern)
+    parse_bed_temp = re.compile('(B)\\1::' + double_pattern)
+    parse_chamber_temp = re.compile('(C)\\1::' + double_pattern)
+    fix_template = "{heater}:{current1}.{current2} /{actual1}.{actual2}"
 
     def check_for_temp_report(self, comm_instance, line, *args, **kwargs):
         # Check to see if we received the broken temperature response and if so extract temperature for octoprint
-        #		self._logger.debug("Testing: %s" % line)
-        if "TT::" not in line:
+        if "TT::" not in line and "BB::" not in line and "CC::" not in line:
             return line
-        self._logger.debug("Original: %s" % line)
-        m = self.parse_Ender3V2Temp.search(line)
-        new_line = (" T:%s.%s /%s.%s B:%s.%s /%s.%s" % (
-            m.group(1), m.group(2), m.group(3), m.group(4), m.group(5), m.group(6), m.group(7), m.group(8)))
-        self._logger.debug("Modified: %s" % new_line)
-        return new_line
+        self._logger.debug("Original: {}".format(line))
 
-    def TempReport(self, comm_instance, parsed_temperatures, *args, **kwargs):
-        self._logger.debug("Before: %s" % parsed_temperatures)
-        #		self._logger.debug("After: %s" % parsed_temperatures)
-        return parsed_temperatures
+        for pattern in (self.parse_hotend_temp, self.parse_bed_temp, self.parse_chamber_temp):
+            for m in pattern.finditer(line):
+                line = line.replace(m.group(0), self.fix_template.format(heater=m.group(1),
+                                                                         current1=m.group(2),
+                                                                         current2=m.group(3),
+                                                                         actual1=m.group(4),
+                                                                         actual2=m.group(5)))
+
+        self._logger.debug("Modified: {}".format(line))
+        return line
 
     def get_update_information(self, *args, **kwargs):
         return dict(
@@ -59,7 +62,6 @@ def __plugin_load__():
 
     global __plugin_hooks__
     __plugin_hooks__ = {
-        "octoprint.comm.protocol.temperatures.received": __plugin_implementation__.TempReport,
         "octoprint.comm.protocol.gcode.received": (__plugin_implementation__.check_for_temp_report, 1),
         "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
     }
