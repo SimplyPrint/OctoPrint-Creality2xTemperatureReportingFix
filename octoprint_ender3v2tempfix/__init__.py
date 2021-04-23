@@ -14,7 +14,7 @@ class Ender3V2TempFixPlugin(octoprint.plugin.OctoPrintPlugin):
     # Recv:   TT::27.7627.76  //0.000.00  BB::39.3539.35  //0.000.00  @@::00  BB@@::00
     # Recv:  T:23.84 /0.00 B:24.05 /0.00 @:0 B@:0
 
-    double_pattern = '(\d+)\.\d+\d+\.(\d+)\s*//\s*(\d+)\.\d+\d+\.(\d+)'
+    double_pattern = '(-?\d+)\.\d+-?\d+\.(\d+)\s*//\s*(\d+)\.\d+\d+\.(\d+)'
     parse_hotend_temp = re.compile('(T\d*)\\1::' + double_pattern)
     parse_bed_temp = re.compile('(B)\\1::' + double_pattern)
     parse_chamber_temp = re.compile('(C)\\1::' + double_pattern)
