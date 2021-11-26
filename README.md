@@ -14,7 +14,7 @@ T:23.84 /0.00 B:24.05 /0.00 @:0 B@:0
 
 
 **This fix is confirmed to work for the following printers:**
-- Creality Ender-3 Pro v2
+- Creality Ender-3 V2
 - Creality CR-6 SE
 - Creality Ender-3 Pro _(newly produced ones that ship with the new mainboard)_
 - _probably all other Creality printers with the new main board as well_
